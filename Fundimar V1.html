@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundimar SRL | Fabricante de Accesorios para Mallas Ciclónicas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amberMetal: {
+                            50: '#fffbe1',
+                            100: '#fff7aa',
+                            200: '#ffee72',
+                            300: '#ffdf38',
+                            400: '#fccb0b',
+                            500: '#e6ad00',
+                            600: '#cc8c00',
+                            700: '#a36400',
+                            800: '#834e06',
+                            900: '#6f3f0c',
+                        },
+                        industrial: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            dark: '#0a0f1d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-metal {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .amber-glow {
+            box-shadow: 0 0 25px -5px rgba(230, 173, 0, 0.3);
+        }
+
+        /* Custom scrollbar for drawer */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e6ad00;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-industrial-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-amberMetal-500 selection:text-slate-950">
+
+    <!-- TOP NOTIFICATION BANNER -->
+    <div
+        class="bg-amberMetal-600 text-slate-950 font-bold text-xs md:text-sm py-2 px-4 text-center flex items-center justify-center gap-3 flex-wrap shadow-md">
+        <i class="fa-solid fa-truck-fast text-slate-950"></i>
+        <span>Atención directa a Ferreterías, Mayoristas y Proyectos en todo el país desde Baní, Peravia.</span>
+        <div class="flex items-center gap-3 ml-2">
+            <a href="https://wa.me/18492457005" target="_blank"
+                class="bg-slate-950/10 hover:bg-slate-950/20 px-2.5 py-0.5 rounded-full transition-all inline-flex items-center gap-1">
+                <i class="fa-brands fa-whatsapp text-green-950"></i> (849) 245-7005
+            </a>
+            <span class="hidden md:inline">•</span>
+            <a href="https://instagram.com/fundimar_srl" target="_blank"
+                class="hover:text-white transition-colors hidden md:inline-flex items-center gap-1 font-extrabold">
+                <i class="fa-brands fa-instagram text-pink-900"></i> @fundimar_srl
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 bg-industrial-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- LOGO -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div
+                        class="w-11 h-11 bg-gradient-to-br from-amberMetal-500 to-amberMetal-700 rounded-lg flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-amberMetal-400/30">
+                        <i class="fa-solid fa-industry text-slate-950 text-2xl"></i>
+                    </div>
+                    <div>
+                        <span
+                            class="font-heading font-black text-2xl tracking-wider text-white block leading-none">FUNDIMAR
+                            <span class="text-amberMetal-500">SRL</span></span>
+                        <span class="text-[10px] text-slate-400 font-mono uppercase tracking-widest block mt-1">
+                            Fabricante de Accesorios para Mallas Ciclónicas</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAV LINKS -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                    <a href="#inicio" class="hover:text-amberMetal-400 transition-colors">Inicio</a>
+                    <a href="#catalogo" class="hover:text-amberMetal-400 transition-colors">Catálogo</a>
+                    <a href="#nosotros" class="hover:text-amberMetal-400 transition-colors">Nosotros</a>
+                    <a href="#contacto" class="hover:text-amberMetal-400 transition-colors">Contacto</a>
+                </nav>
+
+                <!-- QUOTE BASKET TRIGGER BUTTON -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleCartDrawer()"
+                        class="relative bg-industrial-800 hover:bg-slate-800 border border-slate-700 hover:border-amberMetal-500 text-white font-bold py-2.5 px-4 rounded-xl transition-all flex items-center gap-2 group">
+                        <i
+                            class="fa-solid fa-file-invoice text-amberMetal-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="hidden sm:inline text-sm">Ver Cotización</span>
+                        <span id="cartBadge"
+                            class="bg-amberMetal-500 text-industrial-900 text-xs font-black px-2 py-0.5 rounded-full ml-1">0</span>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <button onclick="toggleMobileMenu()"
+                        class="md:hidden p-2.5 text-slate-400 hover:text-white rounded-lg bg-industrial-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE NAV DROPDOWN -->
+        <div id="mobileMenu"
+            class="hidden md:hidden border-t border-slate-800 bg-industrial-900 px-4 pt-3 pb-6 space-y-3">
+            <a href="#inicio" onclick="toggleMobileMenu()"
+                class="block text-slate-300 hover:text-amberMetal-400 font-medium py-2">Inicio</a>
+            <a href="#catalogo" onclick="toggleMobileMenu()"
+                class="block text-slate-300 hover:text-amberMetal-400 font-medium py-2">Catálogo</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()"
+                class="block text-slate-300 hover:text-amberMetal-400 font-medium py-2">Nosotros</a>
+            <a href="#contacto" onclick="toggleMobileMenu()"
+                class="block text-slate-300 hover:text-amberMetal-400 font-medium py-2">Contacto</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio"
+        class="relative overflow-hidden py-16 md:py-24 border-b border-slate-800 bg-gradient-to-b from-industrial-900 via-industrial-800 to-industrial-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amberMetal-500/10 border border-amberMetal-500/30 text-amberMetal-400 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-industry"></i> Baní, Peravia, R.D.
+                    </div>
+                    <h1
+                        class="text-3xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight leading-tight text-white">
+                        Accesorios para mallas ciclónicas y <span
+                            class="text-amberMetal-400 underline decoration-amberMetal-500/50"> fabricación de piezas
+                            fundidas en aluminio</span>
+                        </span>
+                    </h1>
+                    <p
+                        class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Fabricación directa de alta calidad en aluminio fundido: abrazaderas, copas pasantes, copas
+                        terminales, Palometas,
+                        tapa clamp y barras tensoras. Suministro para Ferreterías, Mayoristas, Industrias y Clientes
+                        Finales
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#catalogo"
+                            class="bg-amberMetal-500 hover:bg-amberMetal-400 text-industrial-900 font-bold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-amberMetal-500/20 flex items-center gap-2">
+                            <i class="fa-solid fa-boxes-stacked"></i> Explorar Catálogo
+                        </a>
+                        <a href="https://wa.me/18492457005?text=Hola%20Fundimar%20SRL,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n"
+                            target="_blank"
+                            class="bg-industrial-800 hover:bg-slate-700 text-white border border-slate-700 font-bold px-7 py-3.5 rounded-xl transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i> Cotizar por WhatsApp
+                        </a>
+                    </div>
+                    <!-- Badges -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-xl font-bold text-white font-heading">100%</span>
+                            <span class="text-xs text-slate-400">Calidad Probada</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-bold text-white font-heading">Envío</span>
+                            <span class="text-xs text-slate-400">Todo el país</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-bold text-white font-heading">Directo</span>
+                            <span class="text-xs text-slate-400">Precios de fábrica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div
+                        class="relative w-full max-w-md bg-industrial-800 p-6 rounded-2xl border border-slate-700 shadow-2xl amber-glow">
+                        <div
+                            class="absolute -top-3 -right-3 bg-amberMetal-500 text-industrial-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-widest shadow">
+                            Atención Inmediata
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-headset text-amberMetal-400"></i> ¿Buscas una cotización rápida?
+                        </h3>
+                        <p class="text-xs text-slate-300 mb-6">
+                            Envíanos tu lista de productos o especificaciones técnicas y te respondemos con precios y
+                            disponibilidad.
+                        </p>
+                        <div class="space-y-3">
+                            <a href="https://wa.me/18492457005" target="_blank"
+                                class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-3 text-sm shadow">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp: (849) 245-7005
+                            </a>
+                            <a href="mailto:fundimarsrl958@gmail.com"
+                                class="w-full bg-industrial-900 hover:bg-slate-900 text-slate-200 border border-slate-700 font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-3 text-sm">
+                                <i class="fa-solid fa-envelope text-amberMetal-400"></i> fundimarsrl958@gmail.com
+                            </a>
+                            <a href="https://instagram.com/fundimar_srl" target="_blank"
+                                class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-3 text-sm shadow">
+                                <i class="fa-brands fa-instagram text-xl"></i> Instagram: @fundimar_srl
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section id="catalogo" class="py-16 bg-industrial-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- SECTION TITLE -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span
+                        class="text-amberMetal-500 font-semibold text-xs tracking-widest uppercase block mb-1">Catálogo
+                        Oficial</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nuestros Accesorios Industriales</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">
+                    Selecciona los productos y medidas que necesitas para agregarlos a tu lista de cotización o haz
+                    clic en "Cotizar" para enviar por WhatsApp.
+                </p>
+            </div>
+
+            <!-- SEARCH & FILTER BAR -->
+            <div
+                class="bg-industrial-800 p-4 rounded-xl border border-slate-700 shadow-md mb-8 space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between gap-4">
+
+                <!-- Search input -->
+                <div class="relative flex-grow">
+                    <i
+                        class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" onkeyup="filterProducts()"
+                        placeholder="Buscar accesorio (ej. Abrazadera 2'', Copa Pasante, Barra Tensora)..."
+                        class="w-full bg-industrial-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amberMetal-500">
+                </div>
+
+                <!-- Category Pills -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 custom-scrollbar text-xs">
+                    <button onclick="setCategoryFilter('all')"
+                        class="cat-btn active bg-amberMetal-500 text-slate-950 font-bold px-3.5 py-2 rounded-lg whitespace-nowrap transition-all"
+                        data-cat="all">
+                        Todos
+                    </button>
+                    <button onclick="setCategoryFilter('abrazaderas')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="abrazaderas">
+                        Abrazaderas
+                    </button>
+                    <button onclick="setCategoryFilter('copas-pasantes')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="copas-pasantes">
+                        Copas Pasantes
+                    </button>
+                    <button onclick="setCategoryFilter('copas-barandales')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="copas-barandales">
+                        Copas Barandales
+                    </button>
+                    <button onclick="setCategoryFilter('copas-finales')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="copas-finales">
+                        Copas Finales
+                    </button>
+                    <button onclick="setCategoryFilter('palometas')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="palometas">
+                        Palometas
+                    </button>
+                    <button onclick="setCategoryFilter('tapa-clamp')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="tapa-clamp">
+                        Tapa Clamp
+                    </button>
+                    <button onclick="setCategoryFilter('barra-tensora')"
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="barra-tensora">
+                        Barra Tensora
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT GRID CONTAINER -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamic Product Cards Injected by JS -->
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div id="noResults"
+                class="hidden text-center py-16 bg-industrial-800/40 border border-dashed border-slate-700 rounded-xl">
+                <i class="fa-solid fa-box-open text-4xl text-slate-500 mb-3"></i>
+                <h3 class="text-lg font-bold text-slate-300">No se encontraron productos</h3>
+                <p class="text-xs text-slate-500 mt-1">Prueba con otro término o limpia el filtro seleccionado.</p>
+                <button onclick="resetFilters()"
+                    class="mt-4 bg-amberMetal-500 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs">
+                    Restablecer Búsqueda
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TARGET CLIENTS SECTION -->
+    <section id="clientes" class="py-16 steel-pattern border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-amberMetal-500 text-xs font-semibold uppercase tracking-widest">Soluciones
+                    Integrales</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Diseñado para Todo Tipo de Comprador</h2>
+                <p class="text-slate-400 text-sm mt-2">Atendemos con la misma eficiencia grandes pedidos de
+                    ferreterías, lotes para distribuidores y necesidades de proyectos individuales.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- FERRETERIAS -->
+                <div
+                    class="bg-industrial-800 border border-slate-700 p-6 rounded-2xl relative group hover:border-amberMetal-500/50 transition-all">
+                    <div
+                        class="w-12 h-12 bg-amberMetal-500/10 text-amberMetal-400 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-amberMetal-500 group-hover:text-slate-950 transition-all">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Ferreterías</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Abastece tu negocio con inventario constante, empacado para rápida distribución y con los
+                        mejores márgenes del mercado dominicano.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Disponibilidad de volumen constante</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Despachos rápidos desde Baní</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Calidad estándar garantizada</li>
+                    </ul>
+                    <a href="https://wa.me/18492457005?text=Hola,%20soy%20de%20una%20Ferretería%20y%20deseo%20catalogo%20de%20precios%20especial."
+                        target="_blank"
+                        class="block text-center bg-industrial-900 hover:bg-industrial-700 border border-slate-700 text-amberMetal-400 font-bold py-2.5 rounded-lg text-xs transition-colors">
+                        Cotizar Cuenta Ferretera
+                    </a>
+                </div>
+
+                <!-- MAYORISTAS / DISTRIBUIDORES -->
+                <div
+                    class="bg-industrial-800 border-2 border-amberMetal-500 p-6 rounded-2xl relative shadow-xl transform md:-translate-y-2">
+                    <div
+                        class="absolute -top-3 right-6 bg-amberMetal-500 text-slate-950 text-[10px] font-black uppercase px-2.5 py-1 rounded-full">
+                        Opción Preferida
+                    </div>
+                    <div
+                        class="w-12 h-12 bg-amberMetal-500 text-slate-950 rounded-xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-boxes-packing"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Mayoristas y Contratistas</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Precios especiales de fábrica para compras por volumen en proyectos perimetrales de gran
+                        escala (solares, fincas, naves industriales).
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Descuentos escalonados por cantidad</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Asesoría en medidas y piezas necesarias</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Atención personalizada rápida por WhatsApp</li>
+                    </ul>
+                    <a href="https://wa.me/18492457005?text=Hola,%20busco%20cotización%20al%20por%20mayor%20para%20proyecto/distribución."
+                        target="_blank"
+                        class="block text-center bg-amberMetal-500 hover:bg-amberMetal-400 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition-colors">
+                        Solicitar Cotización por Volumen
+                    </a>
+                </div>
+
+                <!-- CLIENTES INDIVIDUALES -->
+                <div
+                    class="bg-industrial-800 border border-slate-700 p-6 rounded-2xl relative group hover:border-amberMetal-500/50 transition-all">
+                    <div
+                        class="w-12 h-12 bg-amberMetal-500/10 text-amberMetal-400 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-amberMetal-500 group-hover:text-slate-950 transition-all">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Clientes Individuales</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        ¿Instalando o reparando la malla de tu propiedad? Te vendemos directamente la cantidad
+                        exacta que requieres sin mínimos forzados.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Venta
+                            directa al detalle</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Guía
+                            rápida de selección de accesorios</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i>
+                            Despacho fácil hacia tu municipio</li>
+                    </ul>
+                    <a href="https://wa.me/18492457005?text=Hola,%20deseo%20comprar%20accesorios%20para%20un%20proyecto%20personal."
+                        target="_blank"
+                        class="block text-center bg-industrial-900 hover:bg-industrial-700 border border-slate-700 text-amberMetal-400 font-bold py-2.5 rounded-lg text-xs transition-colors">
+                        Cotizar Detalle
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- NOSOTROS / ABOUT SECTION -->
+    <section id="nosotros" class="py-16 bg-industrial-800/50 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-amberMetal-400 font-bold text-xs uppercase tracking-widest block mb-2">Fundición &
+                        Calidad comprobada</span>
+                    <h2 class="text-3xl font-black font-heading text-white mb-4">Sobre Fundimar SRL</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        Somos una empresa dominicana radicada en **Baní, provincia Peravia**, especializada en la
+                        fundición, producción, importación y distribución de piezas pesadas, tapas de alcantarillado,
+                        rejillas y tuberías industriales.
+                    </p>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Abastecemos a ferreterías mayoristas, ingenieros contratistas y proyectos urbanísticos en toda
+                        la República Dominicana, ofreciendo resistencia, durabilidad y entregas oportunas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-industrial-900 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-shield-halved text-amberMetal-400 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Alta Durabilidad</h4>
+                            <p class="text-xs text-slate-400 mt-1">Hierro fundido gris y dúctil para tráfico pesado.</p>
+                        </div>
+                        <div class="p-4 bg-industrial-900 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-truck-ramp-box text-amberMetal-400 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Despacho Nacional</h4>
+                            <p class="text-xs text-slate-400 mt-1">Coordinación de transporte rápido a cualquier
+                                provincia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-industrial-900 p-8 rounded-2xl border border-slate-800 flex flex-col justify-center">
+                    <h3 class="text-xl font-bold font-heading text-white mb-4 border-b border-slate-800 pb-3">
+                        Información Corporativa</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-amberMetal-400 mt-1"></i>
+                            <div>
+                                <span class="font-semibold text-white block">Ubicación Principal:</span>
+                                <span class="text-slate-300 text-xs">Baní, Peravia, República Dominicana</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-whatsapp text-green-400 text-lg mt-0.5"></i>
+                            <div>
+                                <span class="font-semibold text-white block">Atención Telefónica / WhatsApp:</span>
+                                <a href="https://wa.me/18492457005" target="_blank"
+                                    class="text-amberMetal-400 text-xs hover:underline">(849) 245-7005</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-envelope text-amberMetal-400 mt-1"></i>
+                            <div>
+                                <span class="font-semibold text-white block">Correo Electrónico:</span>
+                                <span class="text-slate-300 text-xs font-mono">fundimarsrl958@gmail.com</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-instagram text-pink-500 text-lg mt-0.5"></i>
+                            <div>
+                                <span class="font-semibold text-white block">Síguenos en Instagram:</span>
+                                <a href="https://instagram.com/fundimar_srl" target="_blank"
+                                    class="text-slate-300 text-xs hover:text-amberMetal-400 transition-colors">@fundimar_srl</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & QUOTE SECTION -->
+    <section id="contacto" class="py-16 bg-industrial-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-black font-heading text-white">Canales de Contacto Directo</h2>
+                <p class="text-slate-400 text-sm mt-2">Estamos disponibles para responder tus preguntas y cotizaciones
+                    especiales.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- WhatsApp Card -->
+                <a href="https://wa.me/18492457005?text=Hola%20Fundimar%20SRL,%20necesito%20una%20cotizaci%C3%B3n"
+                    target="_blank"
+                    class="bg-industrial-800 p-6 rounded-2xl border border-slate-800 hover:border-green-500 transition-all group">
+                    <div
+                        class="w-12 h-12 bg-green-500/10 text-green-400 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">WhatsApp Directo</h3>
+                    <p class="text-xs text-slate-400 mb-3">Atención inmediata para pedidos y pedidos especiales.</p>
+                    <span class="text-green-400 text-xs font-bold font-mono">(849) 245-7005 &rarr;</span>
+                </a>
+
+                <!-- Instagram Card -->
+                <a href="https://instagram.com/fundimar_srl" target="_blank"
+                    class="bg-industrial-800 p-6 rounded-2xl border border-slate-800 hover:border-pink-500 transition-all group">
+                    <div
+                        class="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Instagram Oficial</h3>
+                    <p class="text-xs text-slate-400 mb-3">Conoce nuestros nuevos envíos y productos.</p>
+                    <span class="text-pink-400 text-xs font-bold font-mono">@fundimar_srl &rarr;</span>
+                </a>
+
+                <!-- Email Card -->
+                <a href="mailto:fundimarsrl958@gmail.com"
+                    class="bg-industrial-800 p-6 rounded-2xl border border-slate-800 hover:border-amberMetal-500 transition-all group">
+                    <div
+                        class="w-12 h-12 bg-amberMetal-500/10 text-amberMetal-400 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-1">Correo Electrónico</h3>
+                    <p class="text-xs text-slate-400 mb-3">Envíanos licitaciones, planos y requerimientos técnicos.</p>
+                    <span class="text-amberMetal-400 text-xs font-bold font-mono">fundimarsrl958@gmail.com &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-industrial-dark text-slate-400 text-xs py-8 border-t border-slate-800">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-heading text-xl font-bold text-white tracking-wide">FUNDIMAR <span
+                        class="text-amberMetal-500">SRL</span></span>
+                <span>&copy; 2026 Baní, Peravia, R.D.</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="https://instagram.com/fundimar_srl" target="_blank"
+                    class="hover:text-amberMetal-400 transition-colors flex items-center gap-1 font-semibold text-slate-300">
+                    <i class="fa-brands fa-instagram text-sm text-pink-500"></i> @fundimar_srl
+                </a>
+                <span>•</span>
+                <span>Correo: fundimarsrl958@gmail.com</span>
+                <span>•</span>
+                <span>Tel: (849) 245-7005</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QUOTE DRAWER / SLIDE-OVER -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title"
+        role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div onclick="toggleCartDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity">
+        </div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-industrial-900 border-l border-slate-800 shadow-2xl flex flex-col">
+                <!-- Drawer Header -->
+                <div class="p-6 bg-industrial-800 border-b border-slate-700 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-file-lines text-amberMetal-400 text-xl"></i>
+                        <h2 class="text-lg font-bold font-heading text-white">Cotización Digital</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Body / Item List -->
+                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsContainer">
+                    <!-- Items rendered here -->
+                </div>
+
+                <!-- Drawer Footer & Form -->
+                <div class="p-6 bg-industrial-800 border-t border-slate-700 space-y-4">
+                    <!-- Customer Details -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-semibold text-slate-300">Tu Nombre / Empresa:</label>
+                        <input type="text" id="clientName" placeholder="Ej. Constructora Perez SRL / Juan"
+                            class="w-full bg-industrial-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amberMetal-500">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-xs font-semibold text-slate-300">Ciudad / Destino de Entrega:</label>
+                        <input type="text" id="clientLocation" placeholder="Ej. Baní, Santo Domingo, Santiago..."
+                            class="w-full bg-industrial-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amberMetal-500">
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="pt-2 border-t border-slate-700 flex items-center justify-between text-sm font-bold">
+                        <span class="text-slate-300">Total Estimado Items:</span>
+                        <span id="cartTotalItems" class="text-amberMetal-400 font-mono">0 unidades</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="space-y-2 pt-2">
+                        <button onclick="sendQuoteWhatsApp()"
+                            class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-lg">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Enviar por WhatsApp
+                        </button>
+                        <button onclick="clearCart()"
+                            class="w-full bg-industrial-900 hover:bg-slate-900 text-slate-400 font-semibold py-2 px-4 rounded-xl border border-slate-700 transition-all text-xs">
+                            Vaciar Cotización
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast"
+        class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-amberMetal-500 text-industrial-900 font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toastMessage">Producto agregado a la cotización</span>
+    </div>
+
+    <script>
+        // PRODUCTS DATA
+        const products = [
+            {
+                id: 'p1',
+                name: 'Abrazadera',
+                category: 'Abrazaderas',
+                desc: 'Abrazaderas de tensión para mallas ciclónicas.',
+                spec: 'Diámetros 1 1/2, 1 1/4, 2, 2 1/2, 3 cm - corta y larga',
+                image: 'https://barrerastore.com/wp-content/uploads/2022/10/Abrazadera-de-tension-de-1-12.webp'
+            },
+            {
+                id: 'p2',
+                name: 'Copa Pasante',
+                category: 'Copas Pasantes',
+                desc: 'Rejilla rectangular de hierro para captación de agua en aceras y contenes.',
+                spec: '40x80 cm - Hierro Dúctil',
+                image: 'https://th.bing.com/th/id/R.6e841a74614795e0ed5725980606f642?rik=MWYdKp3C00yi8w&riu=http%3a%2f%2fferreterialagrande.com%2fwp-content%2fuploads%2f2024%2f11%2fCopa-pasante-para-tubo-malla-768x768.jpg&ehk=VtsKohfAayDTzvXbzFBGbHTu1D3jTpaeWQcfnhY5LLM%3d&risl=&pid=ImgRaw&r=0'
+            },
+            {
+                id: 'p3',
+                name: 'Copa Barandal',
+                category: 'Copas Barandales',
+                desc: 'Tubería pesada para aguas residuales y sistemas sanitarios industriales.',
+                spec: 'Diámetro 4" x 3 Metros',
+                image: 'https://th.bing.com/th/id/R.7b65440ca17def7a81c6ddcf8e7b515a?rik=sdNieDO5Z1xyeg&riu=http%3a%2f%2fsalcedoymartin.com%2fimages%2fcercas%2fcople.jpg&ehk=V8s8hJ%2f5sn5bcZ4rGZYalZzL7WY%2b2On1SW7t7ceN1dw%3d&risl=&pid=ImgRaw&r=0'
+            },
+            {
+                id: 'p4',
+                name: 'Copa Final',
+                category: 'Copas Finales',
+                desc: 'Tapa hermética con marco para registros de inspección y cisternas.',
+                spec: '50x50 cm - Hierro Fundido',
+                image: 'https://ferremix.com.do/cdn/shop/files/29012.jpg?v=1742241870'
+            },
+            {
+                id: 'p5',
+                name: 'Palometas sencilla y doble',
+                category: 'Palometas',
+                desc: 'Válvula pesada para control de flujo en redes hidráulicas e industriales.',
+                spec: 'Conexión Brida 3"',
+                image: 'https://th.bing.com/th/id/R.59fcaa4be15fb5dface990a44c9f859d?rik=pPOlna0TWaBKCQ&riu=http%3a%2f%2fferreterialagrande.com%2fwp-content%2fuploads%2f2024%2f11%2fPalomta-malla-doble-1.jpg&ehk=rY%2bVnALiZfdSKqI%2bqyv4UmXkYsfgQJ%2btlpZnxfq0A6w%3d&risl=&pid=ImgRaw&r=0'
+            },
+            {
+                id: 'p6',
+                name: 'Tapa Clamp',
+                category: 'Tapa Clamp',
+                desc: 'Conexión de alta presión para canalizaciones metálicas.',
+                spec: 'Diámetro 3" - Rosca NPT',
+                image: 'https://domesticfencefittings.com/store/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/l/dlrc25x2_chain-link-2-12-post-x-2-rail-domestic-line-rail-clamps-fits-2-38-od-posts-and-1-78-od-rails_3_796691.jpg'
+            },
+            {
+                id: 'p7',
+                name: 'Barra Tensora',
+                category: 'Barra Tensora',
+                desc: 'Conexión de alta presión para canalizaciones metálicas.',
+                spec: 'Diámetro 3" - Rosca NPT',
+                image: 'https://www.steelsforged.com/wp-content/uploads/2025/10/1761395620/36-galvanized-tension-bar-1761395625.webp'
+            }
+        ];
+
+        let cart = [];
+        let currentCategory = 'all';
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = products.filter(p => {
+                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchVal) || p.desc.toLowerCase().includes(searchVal) || p.spec.toLowerCase().includes(searchVal);
+                return matchCategory && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-industrial-800 rounded-2xl border border-slate-800">
+                        <i class="fa-solid fa-boxes-searching text-4xl text-slate-500 mb-3"></i>
+                        <p class="text-slate-300 font-bold">No se encontraron productos</p>
+                        <p class="text-slate-500 text-xs mt-1">Intenta con otros términos o cambia de categoría.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-industrial-800 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberMetal-500/50 transition-all flex flex-col group">
+                    <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+                        <img src="${p.image}" alt="${p.name}" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x300/1e293b/e6ad00?text=FUNDIMAR+SRL'">
+                        <span class="absolute top-3 left-3 bg-industrial-900/80 backdrop-blur-md text-amberMetal-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider border border-slate-700">
+                            ${p.category}
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-bold text-white text-base leading-snug group-hover:text-amberMetal-400 transition-colors">${p.name}</h3>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">${p.desc}</p>
+                            <span class="inline-block mt-2 text-[11px] font-mono text-slate-300 bg-industrial-900 px-2 py-1 rounded border border-slate-700">
+                                <i class="fa-solid fa-ruler-combined text-amberMetal-400 mr-1"></i>${p.spec}
+                            </span>
+                        </div>
+                        <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between gap-2">
+                            <input type="number" id="qty-${p.id}" value="1" min="1" class="w-16 bg-industrial-900 border border-slate-700 rounded-lg px-2 py-1.5 text-center text-xs text-white font-bold focus:outline-none focus:border-amberMetal-500">
+                            <button onclick="addToCart('${p.id}')" class="flex-1 bg-amberMetal-500 hover:bg-amberMetal-400 text-industrial-900 font-bold py-2 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-amberMetal-500', 'text-industrial-900', 'font-bold');
+                btn.classList.add('bg-industrial-800', 'text-slate-300');
+            });
+            event.target.classList.remove('bg-industrial-800', 'text-slate-300');
+            event.target.classList.add('bg-amberMetal-500', 'text-industrial-900', 'font-bold');
+            renderProducts();
+        }
+
+        function filterProducts() {
+            renderProducts();
+        }
+
+        function addToCart(productId) {
+            const qtyInput = document.getElementById(`qty-${productId}`);
+            const qty = parseInt(qtyInput.value) || 1;
+            const product = products.find(p => p.id === productId);
+
+            const existingIndex = cart.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += qty;
+            } else {
+                cart.push({ ...product, qty });
+            }
+
+            updateCartUI();
+            showToast(`Agregado: ${product.name} (${qty} u.)`);
+        }
+
+        function updateCartQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            badge.innerText = totalCount;
+
+            const container = document.getElementById('cartItemsContainer');
+            const totalItemsEl = document.getElementById('cartTotalItems');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-500 space-y-3">
+                        <i class="fa-solid fa-file-circle-xmark text-4xl"></i>
+                        <p class="text-sm font-semibold">Tu cotización está vacía</p>
+                        <p class="text-xs">Agrega productos desde el catálogo.</p>
+                    </div>
+                `;
+                totalItemsEl.innerText = '0 unidades';
+                return;
+            }
+
+            totalItemsEl.innerText = `${totalCount} unidad(es)`;
+
+            container.innerHTML = cart.map(item => `
+                <div class="bg-industrial-800 p-3.5 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-white text-xs truncate">${item.name}</h4>
+                        <span class="text-[10px] text-slate-400 block">${item.spec}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 bg-industrial-900 border border-slate-700 text-slate-300 rounded flex items-center justify-center text-xs font-bold hover:bg-slate-700">-</button>
+                        <span class="text-xs font-bold font-mono text-amberMetal-400 w-5 text-center">${item.qty}</span>
+                        <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 bg-industrial-900 border border-slate-700 text-slate-300 rounded flex items-center justify-center text-xs font-bold hover:bg-slate-700">+</button>
+                        <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-red-400 p-1 ml-1">
+                            <i class="fa-solid fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function sendQuoteWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Añade al menos un producto a la cotización');
+                return;
+            }
+
+            const name = document.getElementById('clientName').value || 'Cliente General';
+            const location = document.getElementById('clientLocation').value || 'No especificado';
+
+            let msg = `*SOLICITUD DE COTIZACIÓN - FUNDIMAR SRL*\n`;
+            msg += `------------------------------------\n`;
+            msg += `*Cliente/Empresa:* ${name}\n`;
+            msg += `*Ubicación/Destino:* ${location}\n\n`;
+            msg += `*PRODUCTOS SOLICITADOS:*\n`;
+
+            cart.forEach((item, index) => {
+                msg += `${index + 1}. *${item.name}*\n   • Cantidad: ${item.qty} u.\n   • Specs: ${item.spec}\n`;
+            });
+
+            msg += `\n------------------------------------\n`;
+            msg += `_Solicitud enviada desde el Cotizador Web de Fundimar SRL (Baní, R.D.)_`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/18492457005?text=${encoded}`, '_blank');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Initialize App on load
+        window.onload = function () {
+            renderProducts();
+        };
+    </script>
+</body>
+
+</html>

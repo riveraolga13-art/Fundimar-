@@ -57,6 +57,29 @@
             box-shadow: 0 0 25px -5px rgba(230, 173, 0, 0.3);
         }
 
+        /* Tamaños de imagen optimizados para tarjetas compactas en GitHub / Web */
+        .product-img-container {
+            width: 100%;
+            height: 160px; /* Altura fija más pequeña y uniforme */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #0a0f1d;
+            border-radius: 0.5rem;
+        }
+
+        .product-img-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain; /* Evita que la imagen se deforme */
+            transition: transform 0.3s ease;
+        }
+
+        .product-img-container img:hover {
+            transform: scale(1.05);
+        }
+
         /* Custom scrollbar for drawer */
         ::-webkit-scrollbar {
             width: 6px;
@@ -173,13 +196,11 @@
                         Accesorios para mallas ciclónicas y <span
                             class="text-amberMetal-400 underline decoration-amberMetal-500/50"> fabricación de piezas
                             fundidas en aluminio</span>
-                        </span>
                     </h1>
                     <p
                         class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
                         Fabricación directa de alta calidad en aluminio fundido: abrazaderas, copas pasantes, copas
-                        terminales, Palometas,
-                        tapa clamp y barras tensoras. Suministro para Ferreterías, Mayoristas, Industrias y Clientes
+                        terminales, Palometas, tapa clamp y barras tensoras. Suministro para Ferreterías, Mayoristas, Industrias y Clientes
                         Finales
                     </p>
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
@@ -275,7 +296,7 @@
                         class="w-full bg-industrial-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amberMetal-500">
                 </div>
 
-                <!-- Category Pills -->
+                <!-- Category Pills (Corregido el error de sintaxis previo) -->
                 <div class="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 custom-scrollbar text-xs">
                     <button onclick="setCategoryFilter('all')"
                         class="cat-btn active bg-amberMetal-500 text-slate-950 font-bold px-3.5 py-2 rounded-lg whitespace-nowrap transition-all"
@@ -288,7 +309,8 @@
                         Abrazaderas
                     </button>
                     <button onclick="setCategoryFilter('copas-pasantes')"
-                        class="https://ferreterialagrande.com/uploads/products/full/copa-pasante-para-tubo-malla.webp="copas-pasantes">
+                        class="cat-btn bg-industrial-900 hover:bg-industrial-700 text-slate-300 px-3.5 py-2 rounded-lg border border-slate-700 whitespace-nowrap transition-all"
+                        data-cat="copas-pasantes">
                         Copas Pasantes
                     </button>
                     <button onclick="setCategoryFilter('copas-barandales')"
@@ -440,7 +462,6 @@
         </div>
     </section>
 
-
     <!-- NOSOTROS / ABOUT SECTION -->
     <section id="nosotros" class="py-16 bg-industrial-800/50 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -517,396 +538,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <h2 class="text-3xl font-black font-heading text-white">Canales de Contacto Directo</h2>
-                <p class="text-slate-400 text-sm mt-2">Estamos disponibles para responder tus preguntas y cotizaciones
-                    especiales.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- WhatsApp Card -->
-                <a href="https://wa.me/18492457005?text=Hola%20Fundimar%20SRL,%20necesito%20una%20cotizaci%C3%B3n"
-                    target="_blank"
-                    class="bg-industrial-800 p-6 rounded-2xl border border-slate-800 hover:border-green-500 transition-all group">
-                    <div
-                        class="w-12 h-12 bg-green-500/10 text-green-400 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-1">WhatsApp Directo</h3>
-                    <p class="text-xs text-slate-400 mb-3">Atención inmediata para pedidos y pedidos especiales.</p>
-                    <span class="text-green-400 text-xs font-bold font-mono">(849) 245-7005 &rarr;</span>
-                </a>
-
-                <!-- Instagram Card -->
-                <a href="https://instagram.com/fundimar_srl" target="_blank"
-                    class="bg-industrial-800 p-6 rounded-2xl border border-slate-800 hover:border-pink-500 transition-all group">
-                    <div
-                        class="w-12 h-12 bg-pink-500/10 text-pink-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-brands fa-instagram"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-1">Instagram Oficial</h3>
-                    <p class="text-xs text-slate-400 mb-3">Conoce nuestros nuevos envíos y productos.</p>
-                    <span class="text-pink-400 text-xs font-bold font-mono">@fundimar_srl &rarr;</span>
-                </a>
-
-                <!-- Email Card -->
-                <a href="mailto:fundimarsrl958@gmail.com"
-                    class="bg-industrial-800 p-6 rounded-2xl border border-slate-800 hover:border-amberMetal-500 transition-all group">
-                    <div
-                        class="w-12 h-12 bg-amberMetal-500/10 text-amberMetal-400 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-1">Correo Electrónico</h3>
-                    <p class="text-xs text-slate-400 mb-3">Envíanos licitaciones, planos y requerimientos técnicos.</p>
-                    <span class="text-amberMetal-400 text-xs font-bold font-mono">fundimarsrl958@gmail.com &rarr;</span>
-                </a>
+                <p class="text-slate-400 text-sm mt-2">Estamos listos para atender tus requerimientos con rapidez y precisión.</p>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-industrial-dark text-slate-400 text-xs py-8 border-t border-slate-800">
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-2">
-                <span class="font-heading text-xl font-bold text-white tracking-wide">FUNDIMAR <span
-                        class="text-amberMetal-500">SRL</span></span>
-                <span>&copy; 2026 Baní, Peravia, R.D.</span>
-            </div>
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <a href="https://instagram.com/fundimar_srl" target="_blank"
-                    class="hover:text-amberMetal-400 transition-colors flex items-center gap-1 font-semibold text-slate-300">
-                    <i class="fa-brands fa-instagram text-sm text-pink-500"></i> @fundimar_srl
-                </a>
-                <span>•</span>
-                <span>Correo: fundimarsrl958@gmail.com</span>
-                <span>•</span>
-                <span>Tel: (849) 245-7005</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- QUOTE DRAWER / SLIDE-OVER -->
-    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title"
-        role="dialog" aria-modal="true">
-        <!-- Backdrop -->
-        <div onclick="toggleCartDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity">
-        </div>
-
-        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div class="w-screen max-w-md bg-industrial-900 border-l border-slate-800 shadow-2xl flex flex-col">
-                <!-- Drawer Header -->
-                <div class="p-6 bg-industrial-800 border-b border-slate-700 flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-file-lines text-amberMetal-400 text-xl"></i>
-                        <h2 class="text-lg font-bold font-heading text-white">Cotización Digital</h2>
-                    </div>
-                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-
-                <!-- Drawer Body / Item List -->
-                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsContainer">
-                    <!-- Items rendered here -->
-                </div>
-
-                <!-- Drawer Footer & Form -->
-                <div class="p-6 bg-industrial-800 border-t border-slate-700 space-y-4">
-                    <!-- Customer Details -->
-                    <div class="space-y-2">
-                        <label class="block text-xs font-semibold text-slate-300">Tu Nombre / Empresa:</label>
-                        <input type="text" id="clientName" placeholder="Ej. Constructora Perez SRL / Juan"
-                            class="w-full bg-industrial-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amberMetal-500">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="block text-xs font-semibold text-slate-300">Ciudad / Destino de Entrega:</label>
-                        <input type="text" id="clientLocation" placeholder="Ej. Baní, Santo Domingo, Santiago..."
-                            class="w-full bg-industrial-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amberMetal-500">
-                    </div>
-
-                    <!-- Summary -->
-                    <div class="pt-2 border-t border-slate-700 flex items-center justify-between text-sm font-bold">
-                        <span class="text-slate-300">Total Estimado Items:</span>
-                        <span id="cartTotalItems" class="text-amberMetal-400 font-mono">0 unidades</span>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="space-y-2 pt-2">
-                        <button onclick="sendQuoteWhatsApp()"
-                            class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-lg">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Enviar por WhatsApp
-                        </button>
-                        <button onclick="clearCart()"
-                            class="w-full bg-industrial-900 hover:bg-slate-900 text-slate-400 font-semibold py-2 px-4 rounded-xl border border-slate-700 transition-all text-xs">
-                            Vaciar Cotización
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST NOTIFICATION CONTAINER -->
-    <div id="toast"
-        class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-amberMetal-500 text-industrial-900 font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-lg"></i>
-        <span id="toastMessage">Producto agregado a la cotización</span>
-    </div>
-
-    <script>
-        // PRODUCTS DATA
-        const products = [
-            {
-                id: 'p1',
-                name: 'Abrazadera',
-                category: 'Abrazaderas',
-                desc: 'Abrazaderas de tensión para mallas ciclónicas.',
-                spec: 'Diámetros 1 1/2, 1 1/4, 2, 2 1/2, 3 cm - corta y larga',
-                image: 'https://barrerastore.com/wp-content/uploads/2022/10/Abrazadera-de-tension-de-1-12.webp'
-            },
-            {
-                id: 'p2',
-                name: 'Copa Pasante',
-                category: 'Copas Pasantes',
-                desc: 'Rejilla rectangular de hierro para captación de agua en aceras y contenes.',
-                spec: '40x80 cm - Hierro Dúctil',
-                image: 'https://th.bing.com/th/id/R.6e841a74614795e0ed5725980606f642?rik=MWYdKp3C00yi8w&riu=http%3a%2f%2fferreterialagrande.com%2fwp-content%2fuploads%2f2024%2f11%2fCopa-pasante-para-tubo-malla-768x768.jpg&ehk=VtsKohfAayDTzvXbzFBGbHTu1D3jTpaeWQcfnhY5LLM%3d&risl=&pid=ImgRaw&r=0'
-            },
-            {
-                id: 'p3',
-                name: 'Copa Barandal',
-                category: 'Copas Barandales',
-                desc: 'Tubería pesada para aguas residuales y sistemas sanitarios industriales.',
-                spec: 'Diámetro 4" x 3 Metros',
-                image: 'https://th.bing.com/th/id/R.7b65440ca17def7a81c6ddcf8e7b515a?rik=sdNieDO5Z1xyeg&riu=http%3a%2f%2fsalcedoymartin.com%2fimages%2fcercas%2fcople.jpg&ehk=V8s8hJ%2f5sn5bcZ4rGZYalZzL7WY%2b2On1SW7t7ceN1dw%3d&risl=&pid=ImgRaw&r=0'
-            },
-            {
-                id: 'p4',
-                name: 'Copa Final',
-                category: 'Copas Finales',
-                desc: 'Tapa hermética con marco para registros de inspección y cisternas.',
-                spec: '50x50 cm - Hierro Fundido',
-                image: 'https://ferremix.com.do/cdn/shop/files/29012.jpg?v=1742241870'
-            },
-            {
-                id: 'p5',
-                name: 'Palometas sencilla y doble',
-                category: 'Palometas',
-                desc: 'Válvula pesada para control de flujo en redes hidráulicas e industriales.',
-                spec: 'Conexión Brida 3"',
-                image: 'https://th.bing.com/th/id/R.59fcaa4be15fb5dface990a44c9f859d?rik=pPOlna0TWaBKCQ&riu=http%3a%2f%2fferreterialagrande.com%2fwp-content%2fuploads%2f2024%2f11%2fPalomta-malla-doble-1.jpg&ehk=rY%2bVnALiZfdSKqI%2bqyv4UmXkYsfgQJ%2btlpZnxfq0A6w%3d&risl=&pid=ImgRaw&r=0'
-            },
-            {
-                id: 'p6',
-                name: 'Tapa Clamp',
-                category: 'Tapa Clamp',
-                desc: 'Conexión de alta presión para canalizaciones metálicas.',
-                spec: 'Diámetro 3" - Rosca NPT',
-                image: 'https://domesticfencefittings.com/store/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/l/dlrc25x2_chain-link-2-12-post-x-2-rail-domestic-line-rail-clamps-fits-2-38-od-posts-and-1-78-od-rails_3_796691.jpg'
-            },
-            {
-                id: 'p7',
-                name: 'Barra Tensora',
-                category: 'Barra Tensora',
-                desc: 'Conexión de alta presión para canalizaciones metálicas.',
-                spec: 'Diámetro 3" - Rosca NPT',
-                image: 'https://www.steelsforged.com/wp-content/uploads/2025/10/1761395620/36-galvanized-tension-bar-1761395625.webp'
-            }
-        ];
-
-        let cart = [];
-        let currentCategory = 'all';
-
-        function renderProducts() {
-            const grid = document.getElementById('productGrid');
-            const searchVal = document.getElementById('searchInput').value.toLowerCase();
-
-            const filtered = products.filter(p => {
-                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
-                const matchSearch = p.name.toLowerCase().includes(searchVal) || p.desc.toLowerCase().includes(searchVal) || p.spec.toLowerCase().includes(searchVal);
-                return matchCategory && matchSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-industrial-800 rounded-2xl border border-slate-800">
-                        <i class="fa-solid fa-boxes-searching text-4xl text-slate-500 mb-3"></i>
-                        <p class="text-slate-300 font-bold">No se encontraron productos</p>
-                        <p class="text-slate-500 text-xs mt-1">Intenta con otros términos o cambia de categoría.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            grid.innerHTML = filtered.map(p => `
-                <div class="bg-industrial-800 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberMetal-500/50 transition-all flex flex-col group">
-                    <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
-                        <img src="${p.image}" alt="${p.name}" class="object-cover w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x300/1e293b/e6ad00?text=FUNDIMAR+SRL'">
-                        <span class="absolute top-3 left-3 bg-industrial-900/80 backdrop-blur-md text-amberMetal-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider border border-slate-700">
-                            ${p.category}
-                        </span>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="font-bold text-white text-base leading-snug group-hover:text-amberMetal-400 transition-colors">${p.name}</h3>
-                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">${p.desc}</p>
-                            <span class="inline-block mt-2 text-[11px] font-mono text-slate-300 bg-industrial-900 px-2 py-1 rounded border border-slate-700">
-                                <i class="fa-solid fa-ruler-combined text-amberMetal-400 mr-1"></i>${p.spec}
-                            </span>
-                        </div>
-                        <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between gap-2">
-                            <input type="number" id="qty-${p.id}" value="1" min="1" class="w-16 bg-industrial-900 border border-slate-700 rounded-lg px-2 py-1.5 text-center text-xs text-white font-bold focus:outline-none focus:border-amberMetal-500">
-                            <button onclick="addToCart('${p.id}')" class="flex-1 bg-amberMetal-500 hover:bg-amberMetal-400 text-industrial-900 font-bold py-2 px-3 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
-                                <i class="fa-solid fa-plus"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function setCategory(cat) {
-            currentCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-amberMetal-500', 'text-industrial-900', 'font-bold');
-                btn.classList.add('bg-industrial-800', 'text-slate-300');
-            });
-            event.target.classList.remove('bg-industrial-800', 'text-slate-300');
-            event.target.classList.add('bg-amberMetal-500', 'text-industrial-900', 'font-bold');
-            renderProducts();
-        }
-
-        function filterProducts() {
-            renderProducts();
-        }
-
-        function addToCart(productId) {
-            const qtyInput = document.getElementById(`qty-${productId}`);
-            const qty = parseInt(qtyInput.value) || 1;
-            const product = products.find(p => p.id === productId);
-
-            const existingIndex = cart.findIndex(item => item.id === productId);
-            if (existingIndex > -1) {
-                cart[existingIndex].qty += qty;
-            } else {
-                cart.push({ ...product, qty });
-            }
-
-            updateCartUI();
-            showToast(`Agregado: ${product.name} (${qty} u.)`);
-        }
-
-        function updateCartQty(productId, delta) {
-            const item = cart.find(i => i.id === productId);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== productId);
-                }
-            }
-            updateCartUI();
-        }
-
-        function removeFromCart(productId) {
-            cart = cart.filter(i => i.id !== productId);
-            updateCartUI();
-        }
-
-        function clearCart() {
-            cart = [];
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const badge = document.getElementById('cartBadge');
-            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
-            badge.innerText = totalCount;
-
-            const container = document.getElementById('cartItemsContainer');
-            const totalItemsEl = document.getElementById('cartTotalItems');
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 text-slate-500 space-y-3">
-                        <i class="fa-solid fa-file-circle-xmark text-4xl"></i>
-                        <p class="text-sm font-semibold">Tu cotización está vacía</p>
-                        <p class="text-xs">Agrega productos desde el catálogo.</p>
-                    </div>
-                `;
-                totalItemsEl.innerText = '0 unidades';
-                return;
-            }
-
-            totalItemsEl.innerText = `${totalCount} unidad(es)`;
-
-            container.innerHTML = cart.map(item => `
-                <div class="bg-industrial-800 p-3.5 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
-                    <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-white text-xs truncate">${item.name}</h4>
-                        <span class="text-[10px] text-slate-400 block">${item.spec}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 bg-industrial-900 border border-slate-700 text-slate-300 rounded flex items-center justify-center text-xs font-bold hover:bg-slate-700">-</button>
-                        <span class="text-xs font-bold font-mono text-amberMetal-400 w-5 text-center">${item.qty}</span>
-                        <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 bg-industrial-900 border border-slate-700 text-slate-300 rounded flex items-center justify-center text-xs font-bold hover:bg-slate-700">+</button>
-                        <button onclick="removeFromCart('${item.id}')" class="text-slate-500 hover:text-red-400 p-1 ml-1">
-                            <i class="fa-solid fa-trash text-xs"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function sendQuoteWhatsApp() {
-            if (cart.length === 0) {
-                showToast('Añade al menos un producto a la cotización');
-                return;
-            }
-
-            const name = document.getElementById('clientName').value || 'Cliente General';
-            const location = document.getElementById('clientLocation').value || 'No especificado';
-
-            let msg = `*SOLICITUD DE COTIZACIÓN - FUNDIMAR SRL*\n`;
-            msg += `------------------------------------\n`;
-            msg += `*Cliente/Empresa:* ${name}\n`;
-            msg += `*Ubicación/Destino:* ${location}\n\n`;
-            msg += `*PRODUCTOS SOLICITADOS:*\n`;
-
-            cart.forEach((item, index) => {
-                msg += `${index + 1}. *${item.name}*\n   • Cantidad: ${item.qty} u.\n   • Specs: ${item.spec}\n`;
-            });
-
-            msg += `\n------------------------------------\n`;
-            msg += `_Solicitud enviada desde el Cotizador Web de Fundimar SRL (Baní, R.D.)_`;
-
-            const encoded = encodeURIComponent(msg);
-            window.open(`https://wa.me/18492457005?text=${encoded}`, '_blank');
-        }
-
-        function toggleCartDrawer() {
-            const drawer = document.getElementById('cartDrawer');
-            drawer.classList.toggle('hidden');
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const msgEl = document.getElementById('toastMessage');
-            msgEl.innerText = message;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        // Initialize App on load
-        window.onload = function () {
-            renderProducts();
-        };
-    </script>
 </body>
-
 </html>
